@@ -114,7 +114,7 @@ class Coverage3(Plugin):
         except KeyError:
             pass
         Plugin.configure(self, options, config)
-        if config.worker:
+        if getattr(config, "worker", None) and config.worker:
             return
         if self.enabled:
             try:
@@ -179,6 +179,7 @@ class Coverage3(Plugin):
             self.cov.html_report(directory=self.coverHtmlDir, morfs=modules)
 
     def isExcludedModule(self, mod):
+        name = mod.__name__.replace("__init__")
         for exclude in self.coverExclude:
             wildstart, wildend = exclude[0] == "*", exclude[-1] == "*"
             if wildstart and wildend and exclude[1:-1] in mod.__name__:
