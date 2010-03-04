@@ -8,17 +8,17 @@
 Installation
 ============
 
-You can install ``nosecover3`` either via the Python Package Index (PyPI)
+You can install ``nose-cover3`` either via the Python Package Index (PyPI)
 or from source.
 
 To install using ``pip``,::
 
-    $ pip install nosecover3
+    $ pip install nose-cover3
 
 
 To install using ``easy_install``,::
 
-    $ easy_install nosecover3
+    $ easy_install nose-cover3
 
 
 If you have downloaded a source tarball you can install it
@@ -36,7 +36,7 @@ to our issue tracker at http://github.com/ask/dispatch/issues/
 Contributing
 ============
 
-Development of ``nosecover3`` happens at Github:
+Development of ``nose-cover3`` happens at Github:
     http://github.com/ask/nosecover3
 
 You are highly encouraged to participate in the development. If you don't

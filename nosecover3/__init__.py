@@ -91,11 +91,19 @@ class Coverage3(Plugin):
                           default=env.get('NOSE_COVER_HTML'),
                           dest='cover_html',
                           help="Produce HTML coverage information")
-        parser.add_option('--cover-html-dir', action='store',
+        parser.add_option('--cover3-html-dir', action='store',
                           default=env.get('NOSE_COVER_HTML_DIR', 'cover'),
-                          dest='cover3_html_dir',
+                          dest='cover_html_dir',
                           metavar='DIR',
                           help='Produce HTML coverage information in dir')
+        parser.add_option('--cover3-xml', action='store',
+                          default=env.get('NOSE_COVER_XML'),
+                          dest='cover_xml',
+                          help='Add Cobertura-style XML coverage reports')
+        parser.add_option('--cover3-xml-file', action='store',
+                          default=env.get('NOSE_COVER_XML_FILE'),
+                          dest='cover_xml_file',
+                          help='File to write XML coverage report.')
 
     def configure(self, options, config):
         """
@@ -121,6 +129,8 @@ class Coverage3(Plugin):
         self.coverTests = options.cover_tests
         self.coverBranch = options.cover_branch
         self.coverExclude = options.cover_exclude or []
+        self.coverXml = options.cover_xml
+        self.coverXmlFile = options.cover_xml_file
         self.coverPackages = []
         if options.cover_packages:
             for pkgs in [tolist(x) for x in options.cover_packages]:
@@ -160,6 +170,8 @@ class Coverage3(Plugin):
                     and not self.isExcludedModule(module)]
         log.debug("Coverage report will cover modules: %s", modules)
         self.cov.report(modules, file=stream)
+        if self.coverXml:
+            self.cov.xml_report(modules, outfile=self.coverXmlFile)
         if self.coverHtmlDir:
             if not os.path.exists(self.coverHtmlDir):
                 os.makedirs(self.coverHtmlDir)

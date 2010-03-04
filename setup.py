@@ -14,8 +14,6 @@ from distutils.command.install_data import install_data
 from distutils.command.install import INSTALL_SCHEMES
 import sys
 
-import nosecover3
-
 packages, data_files = [], []
 root_dir = os.path.dirname(__file__)
 if root_dir != '':
@@ -62,12 +60,12 @@ else:
     long_description = "See http://pypi.python.org/pypi/nosecover3"
 
 setup(
-    name='nosecover3',
-    version=nosecover3.__version__,
-    description=nosecover3.__doc__,
-    author=nosecover3.__author__,
-    author_email=nosecover3.__contact__,
-    url=nosecover3.__homepage__,
+    name='nose-cover3',
+    version="0.0.1",
+    description="Coverage 3.x support for Nose",
+    author="Ask Solem",
+    author_email="askh@opera.com",
+    url="http://github.com/ask/nosecover3",
     platforms=["any"],
     packages=packages,
     license="GNU LGPL",
