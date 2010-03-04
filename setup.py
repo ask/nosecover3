@@ -61,7 +61,7 @@ else:
 
 setup(
     name='nose-cover3',
-    version="0.0.1",
+    version="0.0.2",
     description="Coverage 3.x support for Nose",
     author="Ask Solem",
     author_email="askh@opera.com",

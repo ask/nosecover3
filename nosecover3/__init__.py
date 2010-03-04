@@ -1,6 +1,6 @@
 """Coverage 3.x support for Nose"""
 
-VERSION = (0, 0, 1)
+VERSION = (0, 0, 2)
 
 __version__ = ".".join(map(str, VERSION))
 __author__ = "Ask Solem"
@@ -96,7 +96,7 @@ class Coverage3(Plugin):
                           dest='cover_html_dir',
                           metavar='DIR',
                           help='Produce HTML coverage information in dir')
-        parser.add_option('--cover3-xml', action='store',
+        parser.add_option('--cover3-xml', action='store_true',
                           default=env.get('NOSE_COVER_XML'),
                           dest='cover_xml',
                           help='Add Cobertura-style XML coverage reports')
