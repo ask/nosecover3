@@ -1,6 +1,6 @@
 """Coverage 3.x support for Nose"""
 
-VERSION = (0, 0, 2)
+VERSION = (0, 0, 3)
 
 __version__ = ".".join(map(str, VERSION))
 __author__ = "Ask Solem"
