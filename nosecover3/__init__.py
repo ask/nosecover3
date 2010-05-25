@@ -45,9 +45,6 @@ class Coverage3(Plugin):
         Add options to command line.
         """
 
-        def list_callback(option, opt, value, parser):
-            setattr(parser.values, option.dest, value.split(","))
-
         Plugin.options(self, parser, env)
         parser.add_option("--cover3-package", action="append",
                           default=env.get('NOSE_COVER_PACKAGE'),
@@ -70,11 +67,10 @@ class Coverage3(Plugin):
                           default=env.get('NOSE_COVER_BRANCH'),
                           help="Include branch coverage. "
                           "[NOSE_COVER_BRANCH]")
-        parser.add_option("--cover3-exclude", action="callback",
+        parser.add_option("--cover3-exclude", action="store",
                           dest="cover_exclude",
                           default=env.get('NOSE_COVER_EXCLUDE'),
                           type="string",
-                          callback=list_callback,
                           help="List of modules to exclude from coverage. "
                           "Supports wildcard matching at both start and "
                           "end. Example: *.core.dispatch.* "
@@ -129,6 +125,8 @@ class Coverage3(Plugin):
         self.coverTests = options.cover_tests
         self.coverBranch = options.cover_branch
         self.coverExclude = options.cover_exclude or []
+        if isinstance(self.coverExclude, basestring):
+            self.coverExclude = self.coverExclude.split(",")
         self.coverXml = options.cover_xml
         self.coverXmlFile = options.cover_xml_file
         self.coverPackages = []
