@@ -61,7 +61,7 @@ else:
 
 setup(
     name='nose-cover3',
-    version="0.0.5",
+    version="0.0.6",
     description="Coverage 3.x support for Nose",
     author="Ask Solem",
     author_email="askh@opera.com",
@@ -71,7 +71,6 @@ setup(
     license="GNU LGPL",
     data_files=data_files,
     zip_safe=False,
-    test_suite="nose.collector",
     install_requires=[
     ],
     classifiers=[
