@@ -2,7 +2,7 @@
  Coverage 3.x support for Nose.
 ================================
 
-:Version: 0.0.6
+:Version: 0.0.7
 
 
 Installation
