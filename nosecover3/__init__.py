@@ -11,6 +11,7 @@ __license__ = "GNU LGPL"
 
 import logging
 import os
+import re
 import sys
 from nose.plugins.base import Plugin
 from nose.util import src, tolist
@@ -22,6 +23,8 @@ Missed: %(missed)s lines<br/>
 Skipped %(skipped)s lines<br/>
 Percent: %(percent)s %%<br/>
 '''
+
+RE_LIST = re.compile(r"\s*,\s*|\n")
 
 class Coverage3(Plugin):
     """
@@ -126,7 +129,7 @@ class Coverage3(Plugin):
         self.coverBranch = options.cover_branch
         self.coverExclude = options.cover_exclude or []
         if isinstance(self.coverExclude, basestring):
-            self.coverExclude = self.coverExclude.split(",")
+            self.coverExclude = RE_LIST.split(self.coverExclude)
         self.coverXml = options.cover_xml
         self.coverXmlFile = options.cover_xml_file
         self.coverPackages = []
