@@ -65,7 +65,7 @@ else:
 
 setup(
     name='nose-cover3',
-    version="0.0.7",
+    version="0.1.0",
     description="Coverage 3.x support for Nose",
     author="Ask Solem",
     author_email="ask@celeryproject.org",
