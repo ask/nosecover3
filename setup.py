@@ -14,6 +14,10 @@ from distutils.command.install_data import install_data
 from distutils.command.install import INSTALL_SCHEMES
 import sys
 
+extra = {}
+if sys.version_info >= (3, 0):
+    extra.update(use_2to3=True)
+
 packages, data_files = [], []
 root_dir = os.path.dirname(__file__)
 if root_dir != '':
@@ -64,7 +68,7 @@ setup(
     version="0.0.7",
     description="Coverage 3.x support for Nose",
     author="Ask Solem",
-    author_email="askh@opera.com",
+    author_email="ask@celeryproject.org",
     url="http://github.com/ask/nosecover3",
     platforms=["any"],
     packages=packages,
@@ -80,10 +84,16 @@ setup(
         "License :: OSI Approved :: GNU Library or Lesser "
             "General Public License (LGPL)",
         "Intended Audience :: Developers",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.5",
+        "Programming Language :: Python :: 2.4",
+        "Programming Language :: Python :: 2",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     long_description=long_description,
     entry_points = {
         'nose.plugins': [ 'cover3 = nosecover3:Coverage3' ]
-    },
+    }, **extra
 )
